@@ -66,6 +66,7 @@ module "app_of_apps" {
   destination_namespace = "parent-app"
  
    providers = {
+    helm = helm
     kubernetes = kubernetes
    }
 

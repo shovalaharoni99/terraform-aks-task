@@ -15,3 +15,7 @@ terraform {
 provider "kubernetes" {
   # Configuration will be passed from the root module.
 }
+
+provider "helm" {
+  
+}
