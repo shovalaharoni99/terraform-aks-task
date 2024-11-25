@@ -48,9 +48,8 @@ module "argocd" {
   namespace = "argocd"
 
   providers = {
-    kubernetes = kubernetes
+    helm = helm
    }
-
    depends_on = [ module.aks]
 }
 
@@ -60,14 +59,13 @@ module "app_of_apps" {
   app_name              = "parent-app"
   argocd_namespace      = module.argocd.namespace
   repo_url              = "https://github.com/shovalaharoni99/my-apps.git"
-  repo_path             = "./"
+  repo_path             = "./apps/"
   target_revision       = "main"
   destination_server    = "https://kubernetes.default.svc"
   destination_namespace = "parent-app"
  
    providers = {
-    helm = helm
-    kubernetes = kubernetes
+    kubectl = kubectl
    }
 
    depends_on = [ module.aks, module.argocd ]

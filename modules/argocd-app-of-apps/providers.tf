@@ -4,13 +4,10 @@ terraform {
       source = "gavinbunney/kubectl"
       version = "1.14.0"
     }
-    kubernetes = {
-      source  = "hashicorp/kubernetes"
-      version = ">=2.0.0"
-    }
   }
 }
 
-provider "kubernetes" {
+
+provider "kubectl" {
   # Configuration will be passed from the root module.
 }

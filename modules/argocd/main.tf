@@ -12,7 +12,7 @@ resource "helm_release" "argocd" {
     name  = "server.service.type"
     value = var.argocd_service_type
   }
-
+ 
 }
 
 

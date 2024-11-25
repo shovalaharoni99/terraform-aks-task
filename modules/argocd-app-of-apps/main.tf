@@ -1,12 +1,3 @@
-resource "kubectl_manifest" "destination_namespace" {
-  yaml_body = <<YAML
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: ${var.destination_namespace}
-YAML
-}
-
 resource "kubectl_manifest" "parent_app" {
   yaml_body = <<YAML
 apiVersion: argoproj.io/v1alpha1
@@ -27,9 +18,10 @@ spec:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+    - CreateNamespace=true 
 YAML
 
-  depends_on = [kubectl_manifest.destination_namespace]
 }
 
 
