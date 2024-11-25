@@ -46,10 +46,26 @@ module "argocd" {
   argocd_helm_chart_version = "7.7.5"
   argocd_service_type = "LoadBalancer"
   kube_config = module.aks.kube_config
+  namespace = "argocd"
 }
 
 
+module "app_of_apps" {
+  source                = "./modules/argocd-app-of-apps"
+  app_name              = "parent-app"
+  argocd_namespace      = module.argocd.namespace
+  repo_url              = "https://github.com/shovalaharoni99/my-apps.git"
+  repo_path             = "./"
+  target_revision       = "main"
+  destination_server    = "https://kubernetes.default.svc"
+  destination_namespace = "parent-app"
+ 
+   providers = {
+    kubernetes = kubernetes
+   }
 
+   depends_on = [ module.aks, module.argocd ]
+}
 
 
 

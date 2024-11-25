@@ -33,9 +33,15 @@ variable "target_revision" {
 variable "destination_server" {
   description = "Kubernetes cluster API server URL"
   type        = string
+  default = "https://kubernetes.default.svc"
 }
 
 variable "destination_namespace" {
   description = "Namespace where child applications will be deployed"
   type        = string
 }
+
+
+# variable "kube_config" {
+#   description = "Kubeconfig for connecting to the Kubernetes cluster."
+# }
