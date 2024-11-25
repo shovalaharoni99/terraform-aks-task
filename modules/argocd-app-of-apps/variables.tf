@@ -42,6 +42,3 @@ variable "destination_namespace" {
 }
 
 
-# variable "kube_config" {
-#   description = "Kubeconfig for connecting to the Kubernetes cluster."
-# }

@@ -45,8 +45,13 @@ module "argocd" {
   source = "./modules/argocd"
   argocd_helm_chart_version = "7.7.5"
   argocd_service_type = "LoadBalancer"
-  kube_config = module.aks.kube_config
   namespace = "argocd"
+
+  providers = {
+    kubernetes = kubernetes
+   }
+
+   depends_on = [ module.aks]
 }
 
 
