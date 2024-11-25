@@ -6,6 +6,9 @@ resource "azurerm_kubernetes_cluster" "aks" {
   dns_prefix          = var.cluster_name
   kubernetes_version    =  var.kubernetes_version
 
+   lifecycle {
+    ignore_changes = [name]  
+  }
 
   default_node_pool {
     name       = "default"
