@@ -1,5 +1,4 @@
 
-
 resource "helm_release" "argocd" {
   name       = "argocd"
   namespace  = "argocd"
@@ -9,11 +8,9 @@ resource "helm_release" "argocd" {
 
   create_namespace = true
 
-  values = [
-    <<EOT
-server:
-  service:
-    type: ${var.argocd_service_type}
-EOT
-  ]
+  set {
+    name  = "server.service.type"
+    value = var.argocd_service_type
+  }
+
 }

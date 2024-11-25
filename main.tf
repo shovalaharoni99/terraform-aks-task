@@ -41,16 +41,12 @@ resource "azurerm_role_assignment" "acr_pull_permission" {
   ]
 }
 
-# module "argocd" {
-#   source = "./modules/argocd"
-#   argocd_helm_chart_version = "7.7.5"
-#   argocd_service_type = "LoadBalancer"
-#   kubeconfig_path = "~/.kube/config"
-
-#   depends_on = [
-#     module.aks
-#   ]
-# }
+module "argocd" {
+  source = "./modules/argocd"
+  argocd_helm_chart_version = "7.7.5"
+  argocd_service_type = "LoadBalancer"
+  kube_config = module.aks.kube_config
+}
 
 
 
