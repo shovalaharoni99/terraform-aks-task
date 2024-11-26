@@ -31,6 +31,9 @@ Before getting started, ensure the following are installed on your system:
 Make sure to configure the following variables before applying Terraform:
 - Your **Azure Subscription**
 - Your **Git repository** where all your application YAML files are stored.
+  Use this Git repository as an example:
+    git@github.com:shovalaharoni99/my-apps.git
+
 
 ## Installation Steps
 
