@@ -1,6 +1,7 @@
 locals {
   location = "westcentralus"
   rg_name = "aks-task"
+  git_repo_url = var.git_repo_url
 }
 
 # Define Resource Group
@@ -58,7 +59,7 @@ module "app_of_apps" {
   source                = "./modules/argocd-app-of-apps"
   app_name              = "parent-app"
   argocd_namespace      = module.argocd.namespace
-  repo_url              = "https://github.com/shovalaharoni99/my-apps.git"
+  repo_url              = local.git_repo_url
   repo_path             = "./apps/"
   target_revision       = "main"
   destination_server    = "https://kubernetes.default.svc"

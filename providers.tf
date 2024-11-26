@@ -19,7 +19,7 @@ provider "azurerm" {
   
   features {}  # This block is required and can be left empty
 
-  subscription_id = "af2b00b0-f252-4e56-962d-45d1d7653003"
+  subscription_id = var.subscription_id
 }
 
 
